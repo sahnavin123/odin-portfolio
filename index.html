@@ -171,15 +171,17 @@
         <h2 class="heading">Contact <span>Me!</span></h2>
         <form action="#">
             <div class="input-box">
-                <input type="text" placeholder="Full name" />
-                <input type="email" placeholder="Email Address">
+                <input type="text" id="name" placeholder="Full name" required />
+                <input type="email" id="email" placeholder="Email Address" required />
+                <p class="error-msg">*Please enter in the correct pattern (abc@gmail.com)</p>
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subject">
+                <input type="text" placeholder="Email Subject" required />
+                <input type="number" id="number" placeholder="Mobile Number" required />
+                <p class="error-msg">*Please enter in the 10 digit valid number</p>
             </div>
             <textarea cols="30" rows="10" placeholder="Your Message"></textarea>
-            <button class="btn" type="submit">Send Message</button>
+            <button class="btn submit-btn" type="submit">Send Message</button>
         </form>
     </section>
     <footer class="footer">

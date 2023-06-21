@@ -1,5 +1,10 @@
 let menuIcon = document.querySelector("#menu-icon");
 let navbar = document.querySelector(".navbar");
+const form = document.querySelector("form");
+const emailInput = document.getElementById("email");
+const numberInput = document.getElementById("number");
+const emailError = document.querySelector("#email + .error-msg");
+const numberError = document.querySelector("#number + .error-msg");
 
 menuIcon.onclick = () => {
   menuIcon.classList.toggle("bx-x");
@@ -32,3 +37,53 @@ window.onscroll = () => {
   menuIcon.classList.remove("bx-x");
   navbar.classList.remove("active");
 };
+
+const validateEmail = () => {
+  const emailValue = emailInput.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailValue === "") {
+    emailError.style.display = "block";
+    emailInput.classList.add("invalid");
+    return false;
+  } else if (!emailPattern.test(emailValue)) {
+    emailError.style.display = "block";
+    emailInput.classList.add("invalid");
+    return false;
+  } else {
+    emailError.style.display = "none";
+    emailInput.classList.remove("invalid");
+    return true;
+  }
+};
+
+// Validate phone number
+const validatePhoneNumber = () => {
+  const numberValue = numberInput.value.trim();
+  const numberPattern = /^\d{10}$/;
+
+  if (numberValue === "") {
+    numberError.style.display = "block";
+    numberInput.classList.add("invalid");
+    return false;
+  } else if (!numberPattern.test(numberValue)) {
+    numberError.style.display = "block";
+    numberInput.classList.add("invalid");
+    return false;
+  } else {
+    numberError.style.display = "none";
+    numberInput.classList.remove("invalid");
+    return true;
+  }
+};
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const isEmailValid = validateEmail();
+  const isPhoneNumberValid = validatePhoneNumber();
+
+  if (isEmailValid && isPhoneNumberValid) {
+    window.location.reload();
+  }
+});

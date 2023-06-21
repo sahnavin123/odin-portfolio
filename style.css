@@ -366,9 +366,20 @@ span {
 }
 
 .contact form .input-box {
+  position: relative;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.error-msg {
+  position: absolute;
+  padding-top: 0.2rem;
+  display: none;
+  color: red;
+  font-size: 10px;
+  top: 5.6rem;
+  left: 52%;
 }
 
 .contact form .input-box input,
@@ -379,7 +390,7 @@ span {
   color: var(--text-color);
   background: var(--second-bg-color);
   border-radius: 0.8rem;
-  margin: 0.7rem;
+  margin: 1rem 0.7rem;
 }
 
 .contact form .input-box input {
