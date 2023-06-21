@@ -57,7 +57,6 @@ const validateEmail = () => {
   }
 };
 
-// Validate phone number
 const validatePhoneNumber = () => {
   const numberValue = numberInput.value.trim();
   const numberPattern = /^\d{10}$/;
