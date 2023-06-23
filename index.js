@@ -42,18 +42,19 @@ const validateEmail = () => {
   const emailValue = emailInput.value.trim();
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (emailValue === "") {
-    emailError.style.display = "block";
-    emailInput.classList.add("invalid");
-    return false;
-  } else if (!emailPattern.test(emailValue)) {
-    emailError.style.display = "block";
-    emailInput.classList.add("invalid");
-    return false;
-  } else {
-    emailError.style.display = "none";
-    emailInput.classList.remove("invalid");
-    return true;
+  switch (true) {
+    case emailValue === "":
+      emailError.style.display = "block";
+      emailInput.classList.add("invalid");
+      return false;
+    case !emailPattern.test(emailValue):
+      emailError.style.display = "block";
+      emailInput.classList.add("invalid");
+      return false;
+    default:
+      emailError.style.display = "none";
+      emailInput.classList.remove("invalid");
+      return true;
   }
 };
 
@@ -61,18 +62,19 @@ const validatePhoneNumber = () => {
   const numberValue = numberInput.value.trim();
   const numberPattern = /^\d{10}$/;
 
-  if (numberValue === "") {
-    numberError.style.display = "block";
-    numberInput.classList.add("invalid");
-    return false;
-  } else if (!numberPattern.test(numberValue)) {
-    numberError.style.display = "block";
-    numberInput.classList.add("invalid");
-    return false;
-  } else {
-    numberError.style.display = "none";
-    numberInput.classList.remove("invalid");
-    return true;
+  switch (true) {
+    case numberValue === "":
+      numberError.style.display = "block";
+      numberInput.classList.add("invalid");
+      return false;
+    case !numberPattern.test(numberValue):
+      numberError.style.display = "block";
+      numberInput.classList.add("invalid");
+      return false;
+    default:
+      numberError.style.display = "none";
+      numberInput.classList.remove("invalid");
+      return true;
   }
 };
 
@@ -82,7 +84,5 @@ form.addEventListener("submit", (e) => {
   const isEmailValid = validateEmail();
   const isPhoneNumberValid = validatePhoneNumber();
 
-  if (isEmailValid && isPhoneNumberValid) {
-    window.location.reload();
-  }
+  isEmailValid && isPhoneNumberValid ? window.location.reload() : null;
 });
